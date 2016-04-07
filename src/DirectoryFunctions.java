@@ -550,11 +550,33 @@ public static void closeFileinCache(Tree tree,String file){
 
 
 
-public static void readFileCache(){
+public static void readFileCache(int startval){
+	//read the contents string from cache from requested byte
+	//handle a case where needs to read from start
+}
+public static void writeFileCache(){
+	
+	//overwrites the content string
+}
+
+public static void appendFileCache(){
+	//concatenate with the contents string
+}
+
+public static void seek(int offsetval, String position){
+	
+	//check start current end
 	
 	
 }
 
+public static void setAttributes(){
+	
+}
+
+public static void getAttributes(){
+	
+}
 
 
 }
