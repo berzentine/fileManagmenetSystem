@@ -16,8 +16,7 @@ import java.util.Scanner;
 public class DirectoryFunctions {
 	static String  searchdir="";
 	static ArrayList<String> InternalTableSpace = new ArrayList<String>();
-	static ArrayList<String> Cache = new ArrayList<String>();
-	
+	static Linked_List cache=new Linked_List();
 	
 	//on open add the directory 
 	static Linked_List list=new Linked_List();
@@ -532,12 +531,11 @@ public static void openFileinCache(Tree tree, String file){
 	if(searchdir.isEmpty()){System.out.println("Could not find the file");}
 	else {searchdir="";}
 	
-	if(Cache.size()==5){
+	
 		
 		//like calling close on the very first entry which is the oldest.
 		
-	}
-	Cache.add(path);
+	
 }
 
 public static void closeFileinCache(Tree tree,String file){
@@ -547,11 +545,15 @@ public static void closeFileinCache(Tree tree,String file){
 	String path = searchdir;
 	if(searchdir.isEmpty()){System.out.println("Could not find the file");}
 	else {searchdir="";}
-	Cache.remove(path);
 	
 }
 
 
+
+public static void readFileCache(){
+	
+	
+}
 
 
 

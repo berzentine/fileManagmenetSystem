@@ -1,6 +1,6 @@
 
 public class Linked_List {
-	
+	int size;
 	Node1 head=null;
 	//To append a file at the end of the linked list.
 	public void append(String path, String name, boolean read, boolean write )
@@ -19,6 +19,8 @@ public class Linked_List {
 			}
 			current.setNext(node);
 		}
+		
+		size ++;
 	}
 	//to print the names of the file that are stored in the linked list
 	public void print_LinkedList()
@@ -67,6 +69,8 @@ public class Linked_List {
 	}
 	
 	
-	
+	public int getsize(){
+		return size;
+	}
 
 }
