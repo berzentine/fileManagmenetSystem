@@ -25,6 +25,11 @@ public class DirectoryFunctions {
 	
 public static void main(String args[]){
 	
+	
+	
+	
+	
+	
 	Scanner sc=new Scanner(System.in);
 	String currentDir=" ";
 	
@@ -37,22 +42,32 @@ public static void main(String args[]){
 	temp.addChild(test);
 
 	
+	//Assumption: Rename operation dosen't need to be get into cache.
+	
 	//create dir and a file and rename it and check before and later ITS
-	//createDir("root/nidhi0", tree, "tempnew1");	
+	createDir("root/nidhi0", tree, "tempnew1");	
 	//createFile(tree, "root/nidhi0/tempnew1", "rushin", true, true);
 	//createFile(tree, "root/nidhi0", "rushin11", true, true);
-	//createFile(tree, "root/nidhi0/", "rushin21", true, true);
+	createFile(tree, "root/nidhi0/", "rushin21", true, true);
+	
+	list.print_LinkedList();
 	//openDir("root/nidhi0/");
 	//System.out.println(tree.getPreOrderTraversal());
-	//RenameFile("root/nidhi0/",tree, "rushin21.txt", "nidhi");
+	deleteFile("rushin21.txt", tree);
+	
+	list.print_LinkedList();
+	
+	
+	
 	//System.out.println(tree.getPreOrderTraversal());
 	//create dir and a file in it and check if node created, delete a file and a directory and check if removed from the node. 
 	//createDir("root/nidhi0", tree, "tempnew1");	
-	//createFile(tree, "root/nidhi0/tempnew1", "rushin", true, true);
+	
 	//createFile(tree, "root/nidhi0", "rushin11", true, true);
 	//createFile(tree, "root/nidhi0/", "rushin21", true, true);
 	//deleteFile("rushin.txt", tree);
 	
+	//System.out.println(list.getsize());
 	
 	//list.print_LinkedList();
 	
@@ -294,6 +309,12 @@ public static void createFile(Tree tree, String path, String filename,boolean re
 	//add cal to create file in rushins code
 	//add a call to creating a node on the virtual space.
 
+	if(list.getsize()>19){
+		System.out.println("Disk out of space. Please delete few files to make more space.");
+		return;
+	}
+	
+	
 	//path uptill the folder i want to make a new file inside
 		String[] parts = path.split("/");
 		Node<String> present = tree.getRoot();
@@ -481,6 +502,7 @@ public static void RenameFile(String path, Tree tree, String oldname,String newn
 {
 	
 	
+	
 		String[] parts = path.split("/");
 		Node<String> present = tree.getRoot();
 		for(int i=0;i<parts.length;i++){
@@ -514,52 +536,30 @@ public static void RenameFile(String path, Tree tree, String oldname,String newn
 	}
 	else 
 	{
-		temp.setName(newname);
+		temp.setName(newname+".txt");
 		System.out.println("Successfully changed the filename from "+oldname+" to "+newname);
 	}
 }
 
 
 
-public static void openFileinCache(Tree tree, String file){
-	//check if more than 5 already in cache?
-	//no then add this one in cache
-	//if yes, remove the index 0 and then add
-		//but while removing index 0, first pdate in  rushins linked list and then remove from cache array
-	search(tree.getRoot(), file);
-	String path = searchdir;
-	if(searchdir.isEmpty()){System.out.println("Could not find the file");}
-	else {searchdir="";}
-	
-	
-		
-		//like calling close on the very first entry which is the oldest.
-		
-	
-}
-
-public static void closeFileinCache(Tree tree,String file){
-	//uppdate the file in LL of rushin
-	//remove the file from the cache
-	search(tree.getRoot(), file);
-	String path = searchdir;
-	if(searchdir.isEmpty()){System.out.println("Could not find the file");}
-	else {searchdir="";}
-	
-}
+/**Cache functions need to implement from here**/
 
 
 
-public static void readFileCache(int startval){
+
+
+
+public static void readFileinCache(int startval){
 	//read the contents string from cache from requested byte
 	//handle a case where needs to read from start
 }
-public static void writeFileCache(){
+public static void writeFileinCache(int offsetval, String position){
 	
 	//overwrites the content string
 }
 
-public static void appendFileCache(){
+public static void appendFileinCache(){
 	//concatenate with the contents string
 }
 
@@ -577,6 +577,40 @@ public static void setAttributes(){
 public static void getAttributes(){
 	
 }
+
+public static void copytoCache(String path, Tree tree){
+	
+	
+	//The open call of a file
+	
+	
+	
+	//get the node form rushins list
+	//append it to the cache behind since we are following FIFO
+	//path is the file /root/nidhi/rushin.txt
+	
+	
+	//check if more than 5 already in cache?
+		//no then add this one in cache behind on the LL.
+		//if yes, remove the index 0 and then add this new file
+			//but while removing index 0, first update in  rushins linked list and then remove from cache array
+		
+}
+
+public static void copyfromCache(String path, Tree tree){
+	
+	
+	//the close call for file
+	
+	
+	//find the node in rushins list
+	//replace that node with this new updated node and its contents
+	//path is the file /root/nidhi/rushin.txt
+	
+	//remove this node from the cache.
+	
+}
+
 
 
 }
