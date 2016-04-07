@@ -16,6 +16,9 @@ import java.util.Scanner;
 public class DirectoryFunctions {
 	static String  searchdir="";
 	static ArrayList<String> InternalTableSpace = new ArrayList<String>();
+	static ArrayList<String> Cache = new ArrayList<String>();
+	
+	
 	//on open add the directory 
 	static Linked_List list=new Linked_List();
 	
@@ -370,6 +373,8 @@ public static void deleteFile(String filename, Tree tree){
 
 
 
+
+
 public static void openDir(String path){
 	
 	//path is upto the directory i want to open
@@ -514,6 +519,39 @@ public static void RenameFile(String path, Tree tree, String oldname,String newn
 		System.out.println("Successfully changed the filename from "+oldname+" to "+newname);
 	}
 }
+
+
+
+public static void openFileinCache(Tree tree, String file){
+	//check if more than 5 already in cache?
+	//no then add this one in cache
+	//if yes, remove the index 0 and then add
+		//but while removing index 0, first pdate in  rushins linked list and then remove from cache array
+	search(tree.getRoot(), file);
+	String path = searchdir;
+	if(searchdir.isEmpty()){System.out.println("Could not find the file");}
+	else {searchdir="";}
+	
+	if(Cache.size()==5){
+		
+		//like calling close on the very first entry which is the oldest.
+		
+	}
+	Cache.add(path);
+}
+
+public static void closeFileinCache(Tree tree,String file){
+	//uppdate the file in LL of rushin
+	//remove the file from the cache
+	search(tree.getRoot(), file);
+	String path = searchdir;
+	if(searchdir.isEmpty()){System.out.println("Could not find the file");}
+	else {searchdir="";}
+	Cache.remove(path);
+	
+}
+
+
 
 
 
